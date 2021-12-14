@@ -21,8 +21,11 @@ def testbench():
     cos = Signal(modbv(0)[8:])
 
     inc_1 = inc(count, FCW, enable, clock, reset)
+    inc_1.convert(hdl='VHDL')
     pa_1 = PA(Acc, count, Poff, enable, clock, reset)
+    pa_1.convert(hdl='VHDL')
     wave_1 = wave(Acc, sin, cos, enable, clock, reset)
+    wave_1.convert(hdl='VHDL')
     HALF_PERIOD = delay(10)
 
     @always(HALF_PERIOD)
